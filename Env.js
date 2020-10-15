@@ -1,6 +1,6 @@
 // Variables used by Scriptable.
 // These must be at the very top of the file. Do not edit.
-// icon-color: deep-brown; icon-glyph: magic;
+// icon-color: deep-green; icon-glyph: magic;
 /**
  * Author: GideonSenku
  * Github: https://github.com/GideonSenku
@@ -20,7 +20,7 @@ const textFormat = {
     defaultText: { size: 14, color: "ffffff", font: "regular" },
     battery: { size: 10, color: "", font: "bold" },
     title: { size: 16, color: "", font: "semibold" },
-    SFMono: { size: 12, color: "ffffff", font: "SF Mono" }
+    SFMono: { size: 11, color: "ffffff", font: "SF Mono" }
 }
 /**
  * @description GET，返回String数据
@@ -265,7 +265,7 @@ const createWidget = async({ title, texts = { },spacing = 5, preview = '' }) => 
   w.backgroundGradient = gradient
   texts['battery'] ? battery(w, title) : provideText(title, w, textFormat.title)
   for (const text in texts) {
-    if (text != 'battery' && text != 'updateTime' && texts.hasOwnProperty(text)) {
+    if (text != 'battery' && text != 'updateTime' && texts.hasOwnProperty(text) && texts[text]) {
       const element = texts[text]
       provideText(element, w, textFormat.SFMono)
     }
@@ -511,6 +511,8 @@ function battery(column,title) {
 // Provide a battery SFSymbol with accurate level drawn on top of it.
 function provideBatteryIcon() {
   
+  if (Device.isCharging()) { return SFSymbol.named("battery.100.bolt").image }
+  
   // Set the size of the battery icon.
   const batteryWidth = 87
   const batteryHeight = 41
@@ -554,22 +556,6 @@ const logErr = (e, messsage) => {
   console.error(e)
 }
 
-function test() {
-  createWidget({
-    title: "移动",
-    texts: {
-      one: "1",
-      one1: "1",
-      one2: "1",
-      one3: "1",
-      onee3: "1",
-      one3e: "1",
-      battery: "true"
-    },
-    preview: "small"
-
-  })
-}
 
 module.exports = {
   dict,

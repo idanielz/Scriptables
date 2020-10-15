@@ -6,9 +6,9 @@
  * Github: https://github.com/evilbutcher
  * 本脚本使用了@Gideon_Senku的Env.scriptable，感谢！
  */
-const goupdate = true;
+const goupdate = false;
 const $ = importModule("Env");
-const title = `🎞 豆瓣电影`;
+const title = `🎞豆瓣电影`;
 const preview = "medium";
 const spacing = 5;
 
@@ -22,14 +22,14 @@ async function createWidget(res) {
   var group = res["subject_collection_items"];
   items = [];
   for (var i = 0; i < 6; i++) {
-    var title = group[i].title;
+    var title2 = group[i].title;
     var rating = group[i].rating;
     if (rating == null) {
       var star = "暂无";
     } else {
       star = rating["star_count"];
     }
-    var item = title + "  " + star + "✨";
+    var item = title2 + "  " + star + "✨";
     items.push(item);
   }
   console.log(items);
@@ -43,7 +43,6 @@ async function createWidget(res) {
       text4: `• ${items[3]}`,
       text5: `• ${items[4]}`,
       text6: `• ${items[5]}`,
-      battery: "true",
     },
     preview,
     spacing,

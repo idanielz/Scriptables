@@ -6,9 +6,9 @@
  * Github: https://github.com/evilbutcher
  * 本脚本使用了@Gideon_Senku的Env.scriptable，感谢！
  */
-const goupdate = true;
+const goupdate = false;
 const $ = importModule("Env");
-var rid = 0; //rid对应不同的B站榜单：0全站，1动画，3音乐，4游戏，5娱乐，36科技，119鬼畜，129舞蹈。
+var rid = 36; //rid对应不同的B站榜单：0全站，1动画，3音乐，4游戏，5娱乐，36科技，119鬼畜，129舞蹈。
 const title = `💗 B站榜单`;
 const preview = "medium";
 const spacing = 5;
@@ -45,7 +45,6 @@ async function createWidget(res) {
       text4: `• ${items[3]}`,
       text5: `• ${items[4]}`,
       text6: `• ${items[5]}`,
-      battery: "true",
     },
     preview,
     spacing,

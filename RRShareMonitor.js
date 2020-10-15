@@ -6,7 +6,7 @@
  * Github: https://github.com/evilbutcher
  * 本脚本使用了@Gideon_Senku的Env.scriptable，感谢！
  */
-const goupdate = true;
+const goupdate = false;
 const $ = importModule("Env");
 const title = `🎬 人人影视`;
 const preview = "medium";
@@ -35,7 +35,6 @@ async function createWidget(res) {
       text4: `• ${items[3]}`,
       text5: `• ${items[4]}`,
       text6: `• ${items[5]}`,
-      battery: "true",
     },
     preview,
     spacing,
